@@ -1,13 +1,27 @@
 from aiogram import types
-import requests
 
 import config
+from handlers.services.currency import CurrencyService
 
 
-async def get_bitcoin(message: types.message):
-	url = 'https://rest.coinapi.io/v1/assets?filter_asset_id=BTC'
-	headers = {
-		'X-CoinAPI-Key': config.API_KEY,
-	}
-	response = requests.get(url, headers=headers).json()
-	await message.answer(response)
+service = CurrencyService(config.API_KEY)
+
+
+async def get_bitcoin(message: types.Message):
+	await message.answer(service.get_currency("BTC"))
+
+
+async def get_ethereum(message: types.Message):
+	await message.answer(service.get_currency("ETH"))
+
+
+async def get_doge(message: types.Message):
+	await message.answer(service.get_currency("DOGE"))
+
+
+async def get_u_coin(message: types.Message):
+	await message.answer(service.get_currency("U"))
+
+
+async def get_currency(message: types.Message):
+	await message.answer(service.get_currency(message.text))
