@@ -9,10 +9,10 @@ keyboard = ReplyKeyboardMarkup(resize_keyboard=True)
 keyboard.add(info_button).row(exchange_button, currency_button)
 
 
-bitcoin_button = KeyboardButton("/BTC")
-ethereum_button = KeyboardButton("/ETH")
-doge_button = KeyboardButton("/DOGE")
-u_coin_button = KeyboardButton("/U")
+bitcoin_button = KeyboardButton("BTC")
+ethereum_button = KeyboardButton("ETH")
+doge_button = KeyboardButton("DOGE")
+u_coin_button = KeyboardButton("U")
 
 currency_keyboard = ReplyKeyboardMarkup(resize_keyboard=True)
 currency_keyboard.row(bitcoin_button, ethereum_button).row(doge_button, u_coin_button)
