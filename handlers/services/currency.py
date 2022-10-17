@@ -1,5 +1,7 @@
 import requests
 
+from handlers.models.currency import CurrencyModel
+
 
 class CurrencyService:
 
@@ -14,4 +16,5 @@ class CurrencyService:
 		response = requests.get(url, headers=headers).json()
 		if not response:
 			return "Похоже, такой криптовалюты нет. Проверьте правильность написания id"
-		return response
+		coin = CurrencyModel.parse_obj(response[0])
+		return coin
