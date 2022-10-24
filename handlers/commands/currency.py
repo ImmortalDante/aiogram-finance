@@ -8,4 +8,7 @@ service = CurrencyService(config.API_KEY)
 
 
 async def get_currency(message: types.Message):
-	await message.answer(service.get_currency(message.text))
+	await message.answer(
+		service.get_currency(message.text),
+		parse_mode="html"
+	)

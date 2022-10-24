@@ -16,5 +16,8 @@ class CurrencyService:
 		response = requests.get(url, headers=headers).json()
 		if not response:
 			return "Похоже, такой криптовалюты нет. Проверьте правильность написания id"
-		coin = CurrencyModel.parse_obj(response[0])
-		return coin
+		coin = dict(CurrencyModel.parse_obj(response[0]))
+		return f"You searched for <b>{coin['name']}</b>\n" \
+			f"- Asset id: {coin['asset_id']}\n" \
+			f"- Price in USD: {coin['price_usd']}\n\n" \
+			f"Original Api: <b>/API</b>"
